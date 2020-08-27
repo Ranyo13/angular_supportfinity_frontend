@@ -1,0 +1,108 @@
+.prof-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #F4F4F7;
+}
+
+.prof-form h1 {
+    margin-left: 150px;
+    font-size: 1.5em;
+    margin-top:50px;
+    font-style:bold;
+}
+.prof-full-width {
+    margin-left: 70px;
+    display:block;
+    
+}
+
+::ng-deep .mat-input-underline {
+    display:none;
+}
+
+.autocomplete
+{
+    display:inline;
+    position: absolute;
+}
+
+.form-control
+{
+    display:block;
+    width:80%;
+    font-size:2em;
+    border-radius:5px;
+    border: solid;
+    border-top-width:2px;
+    border-left-width:2px;
+    border-right-width:4px;
+    border-bottom-width:4px;
+    border-color: #DADBE6;
+    margin:20px;
+    background-color: white;
+    margin-left: 30px;
+    /* margin-bottom:70px; */
+}
+
+.form-control-red
+{
+    display:block;
+    width:80%;
+    font-size:2em;
+    border-radius:5px;
+    border: solid;
+    border-top-width:2px;
+    border-left-width:2px;
+    border-right-width:4px;
+    border-bottom-width:4px;
+    border-color: red;
+    margin:20px;
+    background-color: white;
+    margin-left: 30px;
+    margin-bottom:70px;
+}
+
+.information {
+    background-color: white;
+    border-radius: 5px;
+    width:80%;
+    height:80%;
+    margin: auto;
+}
+
+.information h2{
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-bottom:50px;
+}
+
+.label {
+    font-size: 1em;
+    padding:20px;
+    
+}
+
+.form-text-error {
+    color:red;
+    margin:20px;
+
+}
+
+.button-obj
+{
+    background-color: #0FA572;
+    color: white;
+    align-content: right;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-style: bold;
+    margin-left:1050px;
+    margin-bottom:50px;
+    margin-top: 30px;
+}

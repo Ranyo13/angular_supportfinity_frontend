@@ -1,0 +1,156 @@
+<!-- <div>
+    <form class = "prof-form">
+        <mat-form-field class = "prof-full-width">
+            <input type = "text"
+                placeholder = "Name"
+                aria-label = "Number"
+                matInput
+                [ formControl ] = "myControl"
+                [ matAutocomplete ] = "auto" >
+            <mat-autocomplete #auto = "matAutocomplete">
+                <mat-option *ngFor = "let skill of skills" [value]  = "state.value">
+                    {{state.display}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+</div> -->
+
+    <form [formGroup]= "myForm" class="prof-form">
+        <h1> Profile </h1>
+        <!-- Value: {{myForm.value | json}}
+        
+        <hr> -->
+    <div class="information">
+        <h2> Basic Information </h2>
+        <mat-form-field class ="prof-full-width" appearance ="none">
+            <label class="label"> First Name * </label>
+            <input type = "text"
+                matInput
+                class="form-control"
+                formControlName = "firstName"
+                [ngClass]="{'form-control-red': myForm.controls.firstName.hasError('required')}"
+                [ngClass]="{'form-control-red': myForm.controls.firstName.hasError('pattern')}"
+                [ngClass]="{'form-control-red': myForm.controls.firstName.hasError('minlength')}"
+                [ngClass]="{'form-control-red': myForm.controls.firstName.hasError('maxlength')}">
+            <div class = "form-text-error" *ngIf="myForm.controls.firstName.touched">
+                <div *ngIf="myForm.controls.firstName.hasError('required')"> First Name is required. </div>
+                <div *ngIf="myForm.controls.firstName.hasError('pattern')"> First Name must contain alphabet characters only. </div>
+                <div *ngIf="myForm.controls.firstName.hasError('minlength')"> Must contain more than 2 characters. </div>
+                <div *ngIf="myForm.controls.firstName.hasError('maxlength')"> Must contain less than 20 characters. </div>
+            </div>
+        </mat-form-field>
+    
+        <mat-form-field class ="prof-full-width" appearance ="none">
+            <label class="label"> Last Name * </label>
+            <input type = "text"
+                matInput
+                class="form-control"
+                formControlName = "lastName"
+                [ngClass]="{'form-control-red': myForm.controls.lastName.hasError('required')}"
+                [ngClass]="{'form-control-red': myForm.controls.lastName.hasError('pattern')}"
+                [ngClass]="{'form-control-red': myForm.controls.lastName.hasError('minlength')}"
+                [ngClass]="{'form-control-red': myForm.controls.lastName.hasError('maxlength')}">
+                <div class = "form-text-error" *ngIf="myForm.controls.lastName.touched">
+                    <div *ngIf="myForm.controls.lastName.hasError('required')"> Last Name is required. </div>
+                    <div *ngIf="myForm.controls.lastName.hasError('pattern')"> Last Name must contain alphabet characters only. </div>
+                    <div *ngIf="myForm.controls.lastName.hasError('minlength')"> Must contain more than 2 characters. </div>
+                    <div *ngIf="myForm.controls.lastName.hasError('maxlength')"> Must contain less than 20 characters. </div>
+                </div>
+        </mat-form-field>
+    
+        <mat-form-field class ="prof-full-width" appearance ="none">
+            <label class="label"> Skill 1 </label>
+            <input type = "text"
+                matInput
+                class="form-control"
+                formControlName = "skillOne"
+                [matAutocomplete] = "auto1" 
+                [ngClass]="{'form-control-red': myForm.controls.skillOne.hasError('invalidSkill')}">
+            <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete" >
+                <mat-option *ngFor = "let skill of filteredOptions | async" [value] ="skill">
+                    {{skill}}
+                </mat-option>
+            </mat-autocomplete>
+            <div class = "form-text-error" *ngIf="myForm.controls.skillOne.touched">
+                <div *ngIf="myForm.controls.skillOne.hasError('invalidSkill')"> Only skills array allowed. </div>
+                <div *ngIf="myForm.hasError('matchingSkills')"> Two or more matching skills. </div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class ="prof-full-width" appearance ="none">
+            <label class="label"> Skill 2 </label>
+            <input type = "text"
+                matInput
+                class="form-control"
+                formControlName = "skillTwo"
+                [matAutocomplete] = "auto2" 
+                [ngClass]="{'form-control-red': myForm.controls.skillTwo.hasError('invalidSkill')}">
+            <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete" >
+                <mat-option *ngFor = "let skill of filteredOptionsTwo | async" [value] ="skill" >
+                    {{skill}}
+                </mat-option>
+            </mat-autocomplete>
+            <div class = "form-text-error" *ngIf="myForm.controls.skillTwo.touched">
+                <div *ngIf="myForm.controls.skillTwo.hasError('invalidSkill')"> Only skills array allowed. </div>
+            </div>
+        </mat-form-field>
+    
+        <mat-form-field class ="prof-full-width" appearance ="none">
+            <label class="label"> Skill 3 </label>
+            <input type = "text"
+                matInput
+                class="form-control"
+                formControlName = "skillThree"
+                [matAutocomplete] = "auto3" 
+                [ngClass]="{'form-control-red': myForm.controls.skillThree.hasError('invalidSkill')}">
+            <mat-autocomplete autoActiveFirstOption #auto3="matAutocomplete" >
+                <mat-option *ngFor = "let skill of filteredOptionsThree | async" [value] ="skill">
+                    {{skill}}
+                </mat-option>
+            </mat-autocomplete>
+            <div class = "form-text-error" *ngIf="myForm.controls.skillThree.touched">
+                <div *ngIf="myForm.controls.skillThree.hasError('invalidSkill')"> Only skills array allowed. </div>
+            </div>
+        </mat-form-field>
+    </div>
+    
+    <div class="button">
+        <button class="button-obj" type="submit" (click)="Submit()"> Save Profile </button>
+    </div>
+    
+
+</form>
+
+<!-- <form>
+    <div class = "form-group">
+        <label for="firstName">First Name</label>
+        <input required minlength="2" maxlength="20"  pattern="a-zA-Z" ngModel name = "firstName" #firstName="ngModel" id="firstName" type="text" class="form-control"> 
+        <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+            <div *ngIf="firstName.errors.required"> First Name required. </div>
+            <div *ngIf="firstName.errors.minlength"> First Name should be more than 2 characters. </div>
+            <div *ngIf="firstName.errors.maxlength"> First Name should be less than 20 characters. </div>
+            <div *ngIf="firstName.errors.pattern"> First Name should include alphabet characters only. </div>
+        </div>
+    </div>
+
+    <div class = "form-group">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" class="form-control"> 
+    </div>
+
+    <div class = "form-group">
+        <label for="skillOne">Skill 1</label>
+        <input id="skillOne" type="text" class="form-control"> 
+    </div>
+
+    <div class = "form-group">
+        <label for="skillTwo">Skill 2</label>
+        <input id="skillTwo" type="text" class="form-control"> 
+    </div>
+
+    <div class = "form-group">
+        <label for="skillThree">Skill 3</label>
+        <input id="skillThree" type="text" class="form-control"> 
+    </div>
+    <button class = "btn btn-primary">Save Profile</button> 
+</form> -->
