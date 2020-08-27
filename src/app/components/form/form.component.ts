@@ -56,11 +56,11 @@ export class FormComponent implements OnInit {
       if(formValue.lastName)
         this.myForm.controls.lastName.setValue(formValue.lastName);
       if(formValue.skillOne)
-        this.myForm.controls.lastName.setValue(formValue.skillOne);
+        this.myForm.controls.skillOne.setValue(formValue.skillOne);
       if(formValue.skillTwo)
-        this.myForm.controls.lastName.setValue(formValue.skillTwo);
+        this.myForm.controls.skillTwo.setValue(formValue.skillTwo);
       if(formValue.skillThree)
-        this.myForm.controls.lastName.setValue(formValue.skillThree);
+        this.myForm.controls.skillThree.setValue(formValue.skillThree);
         
     }
     console.log(JSON.parse(localStorage.getItem('form-data')));
